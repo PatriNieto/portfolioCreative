@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    
     <title>Patricia Nieto - Portfolio Web</title>
 </head>
 <body>
@@ -20,9 +21,12 @@
         </header>
     <main>
         <div class="container">
-<h1 id="ppl">Creative developer</h1>
-<img src="" alt="">
+            <div class="creative">
+<h1 id="ppl" class="split">Creative developer</h1>
+<div id="subtitle">
 <h3>Design-driven full-stack development</h3>
+
+</div></div>
         <ul id="services">
             <li>/ART DIRECTION</li>
             <li>/WEB DESIGN (UX/UI)</li>
@@ -36,6 +40,28 @@
 </div>
       
         </div>
-    <script src=""></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/SplitText.min.js"></script>
+
+<script>
+    gsap.registerPlugin(SplitText) 
+
+
+    // split elements with the class "split" into words and characters
+let split = SplitText.create(".split", { type: "words, chars" });
+
+// now animate the characters in a staggered fashion
+gsap.from(split.chars, {
+  duration: 1.3, 
+  y: -100,      
+  autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
+ stagger: {
+    each: 0.05,
+    from: "center" // O "end", "random", "edges"
+  },
+   ease: "power4.out",
+  delay: 0.3,
+});
+</script>
 </body>
 </html>
