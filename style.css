@@ -47,13 +47,42 @@ main{
     padding:clamp(20px, 5vw, 40px);
     background: #fff;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    background-image: url('background.svg');
+  
+}
+#block1{
+      background-image: url('background.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
+#about {
+    background: linear-gradient(135deg, #a2a1a1 0%, #f5f5f5 100%);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    padding:clamp(20px, 5vw, 40px);
+}
+#aboutQuote{
+    text-transform: uppercase;
+    margin-top: 20px;
+    font-size: clamp(3rem, 5vw, 10rem);
+    color: #fff;
+}
+#aboutQuote p{
+font-family: "rig-shaded-bold-face", sans-serif;
+font-weight: 700;
+font-style: normal;
+display: inline-block;
+}
+#aboutQuote .letter {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
 h1{
-    font-size: 12rem;
+    
     font-size: clamp(3rem, 6vw, 12rem);
     line-height: 1.05;
     margin-bottom: 10px;
@@ -91,13 +120,22 @@ h3{
     justify-content: center;
     margin-top: clamp(3rem, 8vw, 18rem);
 }
-blockquote{
+#mainQuote{
     display: block;
     font-size: 1.2rem;
     line-height: 1.5;
     color: #333;
     max-width: 600px;  
     text-align: center;
+}
+footer{
+    text-align: center;
+    padding: 20px;
+    background-image: url("background.svg");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    color: #fff;
 }
 
 @media (max-width: 768px) {
