@@ -73,6 +73,7 @@ h3{
     justify-content: space-around;
     gap: 30px;
     margin:auto 40px;
+    color: #ffffffbb;
 }
 #quote{
     display: flex;
