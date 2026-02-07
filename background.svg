@@ -1,35 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
-    <!-- Definir el filtro de blur -->
-    <defs>
-        <filter id="blur">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="40"/>
-        </filter>
-    </defs>
-    
-    <!-- Elipse 1: Grande y horizontal -->
-    <ellipse 
-        cx="200" cy="250" 
-        rx="300" ry="180" 
-        fill="#e8e8e8" 
-        opacity="0.5" 
-        filter="url(#blur)"
-    />
-    
-    <!-- Elipse 2: Vertical -->
-    <ellipse 
-        cx="750" cy="700" 
-        rx="150" ry="280" 
-        fill="#d5d5d5" 
-        opacity="0.4" 
-        filter="url(#blur)"
-    />
-    
-    <!-- Elipse 3: Pequeña y centrada -->
-    <ellipse 
-        cx="500" cy="500" 
-        rx="200" ry="200" 
-        fill="#130070" 
-        opacity="0.6" 
-        filter="url(#blur)"
-    />
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="blueGradient" cx="50%" cy="50%" r="50%">
+      <!-- Centro oscuro -->
+      <stop offset="0%" stop-color="#0000ff" />
+      <stop offset="30%" stop-color="#3a5175" />
+      <!-- Transición al azul medio -->
+      <stop offset="50%" stop-color="#4169b3" />
+      <!-- Azul más claro -->
+      <stop offset="70%" stop-color="#6a8fd8" />
+      <!-- Borde muy difuminado -->
+      <stop offset="85%" stop-color="#b8c9e8" />
+      <stop offset="100%" stop-color="#e8ecf4" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Aplicar el degradado -->
+  <rect width="100%" height="100%" fill="url(#blueGradient)" />
 </svg>
