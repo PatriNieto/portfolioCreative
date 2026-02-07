@@ -92,35 +92,6 @@
             }
         });
     });
-const p = document.querySelector("#aboutQuote p");
-
-const text = p.textContent;
-p.textContent = "";
-
-text.split("").forEach(letter => {
-  const span = document.createElement("span");
-  span.classList.add("letter");
-  span.textContent = letter === " " ? "\u00A0" : letter;
-  p.appendChild(span);
-});
-const wordsEls = document.querySelectorAll("#aboutQuote .letter");
-
-gsap.to("#aboutQuote .letter", {
-  y: () => gsap.utils.random(100, 150),
-  x: () => gsap.utils.random(-40, 40),
-  rotation: () => gsap.utils.random(-30, 30),
-
-  stagger: {
-    each: 0.01,
-    from: "random"
-  },
-  scrollTrigger: {
-    trigger: "#aboutQuote",
-    start: "top 30%",
-    end: "top 10%",
-    scrub: true
-  }
-});
 
     
 </script>

@@ -76,7 +76,11 @@ font-weight: 700;
 font-style: normal;
 display: inline-block;
 }
-#aboutQuote .letter {
+#aboutQuote .word{
+  display: inline-block;
+  white-space: nowrap; 
+}
+#aboutQuote .char{
   display: inline-block;
   will-change: transform, opacity;
 }
