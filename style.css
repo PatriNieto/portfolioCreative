@@ -1,0 +1,119 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: #f5f5f5;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+ul{
+    list-style: none;
+}
+nav ul{
+   
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+header{
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background: #fff;
+    padding: clamp(12px, 2vw, 30px);
+   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+main{
+    
+}
+.container{
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding:clamp(20px, 5vw, 40px);
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-image: url('background.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+h1{
+    font-size: 12rem;
+    font-size: clamp(3rem, 6vw, 12rem);
+    line-height: 1.05;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+#ppl{
+    margin-top: auto;
+}
+h3{
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+#services{
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin:auto 40px;
+}
+#quote{
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    margin-top: clamp(3rem, 8vw, 18rem);
+}
+blockquote{
+    display: block;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #333;
+    max-width: 600px;  
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+  header {
+        flex-direction: row; /* Mantener en fila */
+        padding: 15px 20px;
+    }
+    
+    nav ul {
+        flex-direction: row; /* Mantener horizontal */
+        gap: 15px;
+        font-size: 0.85rem; /* Reducir tamaño */
+    }
+    
+    #logo {
+        font-size: 1.1rem; /* Reducir logo */
+    }
+    .container {
+        padding: 20px;
+        height: auto;
+    }
+    #ppl{
+    margin-top: 100px;
+}
+#services{
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px auto;
+}
+}
