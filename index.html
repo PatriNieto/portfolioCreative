@@ -20,7 +20,7 @@
             </ul>
         </nav>
         </header>
-    <main>
+    <main id="content">
         <div class="container" id="block1">
             <div class="creative">
 <h1 id="ppl" class="split">Creative developer</h1>
@@ -43,6 +43,97 @@
         </div>
           <div class="container" id="projects">
             <h1 class="split">Projects</h1>
+            <h4>A collection of development and design exercices</h4>
+            <div id="carrousel">
+                <div class="project">
+                    <img src="./imgs/Enlightened.png" alt="Project 1">
+                    <h3>Project 1</h3>
+                    <p>A brief description of Project 1.</p>
+                    
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+            </div>
+               <div class="project">
+                    <img src="./imgs/Enlightened.png" alt="Project 1">
+                    <h3>Project 1</h3>
+                    <p>A brief description of Project 1.</p>
+                    <p>Technologies used:</p>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+            </div>
+              <div class="project">
+                    <img src="./imgs/Enlightened.png" alt="Project 1">
+                    <h3>Project 1</h3>
+                    <p>A brief description of Project 1.</p>
+                    <p>Technologies used:</p>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+            </div>
+             <div class="project">
+                    <img src="./imgs/Enlightened.png" alt="Project 1">
+                    <h3>Project 1</h3>
+                    <p>A brief description of Project 1.</p>
+                    <p>Technologies used:</p>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+            </div>
+              <div class="project">
+                    <img src="./imgs/Enlightened.png" alt="Project 1">
+                    <h3>Project 1</h3>
+                    <p>A brief description of Project 1.</p>
+                    
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+            </div>
+               <div class="project">
+                    <img src="./imgs/Enlightened.png" alt="Project 1">
+                    <h3>Project 1</h3>
+                    <p>A brief description of Project 1.</p>
+                    <p>Technologies used:</p>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+            </div>
+              <div class="project">
+                    <img src="./imgs/Enlightened.png" alt="Project 1">
+                    <h3>Project 1</h3>
+                    <p>A brief description of Project 1.</p>
+                    <p>Technologies used:</p>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+            </div>
+             <div class="project">
+                    <img src="./imgs/Enlightened.png" alt="Project 1">
+                    <h3>Project 1</h3>
+                    <p>A brief description of Project 1.</p>
+                    <p>Technologies used:</p>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+            </div>
+          </div>
           </div>
         <div class="container" id="about">
             <h1 class="split">About me</h1>
@@ -53,12 +144,12 @@
             <!-- Three Container -->
         <div data-app-container></div>
         </div>
-      <div class="container"></div>
-      
-        </main>
+      <div id="contact" class="container"></div>
         <footer>
             Patricia Nieto - 2026
         </footer>
+        </main>
+      
             
         
 
@@ -234,7 +325,9 @@ class Experience {
 //box
 let boxGeom = new THREE.BoxGeometry(2, 2, 2);
     let material = new THREE.MeshLambertMaterial({
-      color: 0xffffff
+      color: 0xffffff,
+        transparent: true,
+        opacity: 0.8
     });
 
     const itemCount = 40;
@@ -268,13 +361,17 @@ let boxGeom = new THREE.BoxGeometry(2, 2, 2);
 
     // Update camera
     const cameraRange = 10;
+    const parallaxSpeed = 0.4; 
     this.camera.position.y = this.mapToRange(
-      this.scrollSmoother.progress,
+        
+      this.scrollSmoother.progress* parallaxSpeed ,
       0,
       1,
       cameraRange,
       -cameraRange
     );
+    //this.camera.position.z = this.settings.cameraDistance + p * 1.5;
+
   };
 
   mapToRange = (value, inMin, inMax, outMin, outMax) => {
