@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <h2 id="logo">Patricia Nieto</h2>  
+        <h2 id="logo"><a href="#block1">Patricia Nieto</a></h2>  
         <nav>
             <ul>
                 
@@ -144,7 +144,12 @@
             <!-- Three Container -->
         <div data-app-container></div>
         </div>
-      <div id="contact" class="container"></div>
+      <div id="vision" class="container">
+        <p>Interfaces shaped by experience</p>
+        <p>Motion and interaction used to reinforce meaning.</p>
+      <p>Clean, tailored code</p>
+      <p>Creative technology</p>
+      </div>
       <footer>
     <div class="footer-content">
         <h3>Let's work together</h3>
@@ -171,9 +176,11 @@
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollSmoother.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollToPlugin.min.js"></script>
+
 
 <script>
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin);
     gsap.registerPlugin(SplitText);
     
     const splitElements = document.querySelectorAll('.split');
@@ -200,8 +207,32 @@
             }
         });
     });
-
-    
+document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                gsap.to(window, {
+                    duration: 1.5,
+                    scrollTo: {
+                        y: targetElement,
+                        offsetY: 80
+                    },
+                    ease: "power2.inOut"
+                });
+            }
+        });
+    });
+    document.getElementById('logo').addEventListener('click', function() {
+    gsap.to(window, {
+        duration: 1.5,
+        scrollTo: { y: 0 },
+        ease: "power2.inOut"
+    });
+});
 </script>
 <script type="importmap">
     {
