@@ -389,7 +389,11 @@ background: #8aa6df;    color: #fff;
     #ppl {
         margin-top: 100px;
     }
-
+#subtitle {
+        max-width: 100%;
+        text-align: center;
+        margin: 20px auto;
+    }
     #services {
         flex-direction: column;
         gap: 15px;
