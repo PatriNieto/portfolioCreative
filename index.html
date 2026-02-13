@@ -336,9 +336,11 @@ class Experience {
   };
 
   initScroll = () => {
+        const isMobile = window.innerWidth <= 768;
     this.scrollSmoother = ScrollSmoother.create({
+
       content: "#content",
-      smooth: 1.2
+      smooth: isMobile ? 0 : 1.2
     });
     //animacion scroll horizontal
 const carrousel = document.getElementById('carrousel');
@@ -358,7 +360,7 @@ let horizontalScroll = gsap.to(carrousel, {
         scrub: 1,
         pin: true,
         invalidateOnRefresh: true, // recalcula si cambia el tamaño
-        anticipatePin: 1
+        anticipatePin: 0
     }});
 
     // Add scroll triggers for each span item
