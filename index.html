@@ -45,6 +45,8 @@
             <h1 class="split">Projects</h1>
             <h4>A collection of development and design exercices</h4>
             <div id="carrousel">
+              <div class="carrousel-start"></div>
+
                 <a href="https://enlighted-c95ha32xx-patris-projects-9af10303.vercel.app/" target="_blank" >
                     <div class="project">
                     <img src="./imgs/Enlightened.png" alt="Project 1">
@@ -124,7 +126,8 @@
             </div>
            </a>
 
-              
+              <div class="carrousel-end"></div>
+
            
           </div>
           </div>
@@ -273,6 +276,10 @@ document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
         ease: "power2.inOut"
     });
 });
+
+
+
+
 </script>
 <script type="importmap">
     {
@@ -333,6 +340,26 @@ class Experience {
       content: "#content",
       smooth: 1.2
     });
+    //animacion scroll horizontal
+const carrousel = document.getElementById('carrousel');
+const projectsSection = document.getElementById('projects');
+
+const getTotalScroll = () => {
+    return carrousel.scrollWidth - projectsSection.offsetWidth;
+};
+const extraPadding = 100;
+let horizontalScroll = gsap.to(carrousel, {
+    x: () => `-${getTotalScroll()}px`,
+    ease: "none",
+    scrollTrigger: {
+        trigger: projectsSection,
+        start: "top top",
+        end: () => `+=${getTotalScroll()}`,
+        scrub: 1,
+        pin: true,
+        invalidateOnRefresh: true, // recalcula si cambia el tamaño
+        anticipatePin: 1
+    }});
 
     // Add scroll triggers for each span item
     document.querySelectorAll("span").forEach((span) => {

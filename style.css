@@ -166,22 +166,36 @@ main {
 }
 #projects {
     min-height: 100vh; 
+    display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: center;
+
     gap: 40px;
     padding: 80px clamp(20px, 5vw, 40px);
+    overflow: hidden;
+
 }
-
-#carrousel {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 350px));
-    gap: 30px;
+#projects h1,
+#projects h4 {
     width: 100%;
-
-    justify-content: center;
+    text-align: center;
+}
+#carrousel {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 30px;
+    width: max-content;
     padding: 20px 0;
 }
-
+.carrousel-s {
+    flex-shrink: 0;
+    width: 100px; 
+}
+.carrousel-end {
+    flex-shrink: 0;
+    width: 100px; 
+}
 .project {
     background: linear-gradient(0deg, #ffffff 0%, #093eff 100%);
     color: black;
@@ -192,6 +206,9 @@ main {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    
+    flex-shrink: 0;
+    width: 1000px;
     height: 100%; 
 }
 
@@ -202,16 +219,14 @@ main {
 
 .project img {
     width: 100%;
-    height: 250px;
+    height: 600px;
     object-fit: cover;
     margin-bottom: 0;
     transition: transform 0.4s ease;
     flex-shrink: 0;
 }
 
-.project:hover img {
-    transform: scale(1.1);
-}
+
 
 .project h3 {
     font-size: 1.5rem;
@@ -414,9 +429,16 @@ background: #8aa6df;    color: #fff;
     }
     
     #carrousel {
-        grid-template-columns: 1fr; /* Una columna en móvil */
+        grid-template-columns: 1fr;
         gap: 20px;
         max-width: 500px;
+    }
+    .carrousel-end {
+
+    width: 50px; 
+}
+    .project{
+        width: 95vw;
     }
     
     .project img {
