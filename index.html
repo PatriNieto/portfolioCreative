@@ -346,25 +346,56 @@ class Experience {
 const carrousel = document.getElementById('carrousel');
 const projectsSection = document.getElementById('projects');
 
-const getTotalScroll = () => {
-    return carrousel.scrollWidth - projectsSection.offsetWidth;
-};
-const extraPadding = 100;
-let horizontalScroll = gsap.to(carrousel, {
-    x: () => `-${getTotalScroll()}px`,
-    ease: "none",
-    scrollTrigger: {
-        trigger: projectsSection,
-        start: "top top",
-        end: () => `+=${getTotalScroll()}`,
-        scrub: 1,
-        pin: true,
-        invalidateOnRefresh: true, // recalcula si cambia el tamaño
-        anticipatePin: 0
-    }});
+// Función para actualizar el cálculo del scroll
+function updateCarrouselScroll() {
+    // Calculamos el ancho total que podemos desplazar
+    const carrouselWidth = carrousel.scrollWidth;
+    const containerWidth = projectsSection.offsetWidth;
+    const maxScroll = carrouselWidth - containerWidth;
+    
+    // Solo crear el trigger si hay scroll disponible
+    if (maxScroll > 0) {
+        // IMPORTANTE: Matamos cualquier trigger existente
+        ScrollTrigger.getAll().forEach(trigger => {
+            if (trigger.vars.id === 'carrouselHorizontal') {
+                trigger.kill();
+            }
+        });
+        
+        // Nuevo trigger optimizado
+        gsap.to(carrousel, {
+            x: -maxScroll,
+            ease: "none",
+            scrollTrigger: {
+                id: 'carrouselHorizontal',
+                trigger: projectsSection,
+                start: "top top",
+                end: () => `+=${maxScroll + 100}`, // Pequeño buffer
+                scrub: 0.5, // Reducimos el scrub para menos vibración
+                pin: true,
+                pinSpacing: true,
+                anticipatePin: 1, // Ayuda con la suavidad
+                invalidateOnRefresh: true,
+                onEnter: () => {
+                    // Cuando entramos, aseguramos que el scroll sea fluido
+                    gsap.set(carrousel, { clearProps: "transform" });
+                }
+            }
+        });
+    }
+}
+
+// Inicializar
+updateCarrouselScroll();
+
+// Actualizar en resize
+window.addEventListener('resize', () => {
+    // Pequeño delay para que se calculen bien las dimensiones
+    setTimeout(updateCarrouselScroll, 100);
+});
 
     // Add scroll triggers for each span item
-    document.querySelectorAll("span").forEach((span) => {
+ document.querySelectorAll("span").forEach((span) => {
       ScrollTrigger.create({
         trigger: span,
         start: "top 90%",
