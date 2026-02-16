@@ -337,11 +337,12 @@ class Experience {
 
   initScroll = () => {
         const isMobile = window.innerWidth <= 768;
-    this.scrollSmoother = ScrollSmoother.create({
-
-      content: "#content",
-      smooth: isMobile ? 0 : 1.2
-    });
+    if (!isMobile) {
+        this.scrollSmoother = ScrollSmoother.create({
+            content: "#content",
+            smooth: 1.2
+        });
+    }
     //animacion scroll horizontal
 const carrousel = document.getElementById('carrousel');
 const projectsSection = document.getElementById('projects');
@@ -488,37 +489,31 @@ let boxGeom = new THREE.BoxGeometry(2, 2, 2);
     }
   };
 
-  updateItems = () => {
+updateItems = () => {
     const time = this.time;
     const amplitude = 0.05;
     const period = this.settings.scalePeriod;
-
     const baseScale = 0.2;
-    const scaleEffect =
-      baseScale + amplitude * Math.sin(Math.PI * 2 * (time / period));
+    const scaleEffect = baseScale + amplitude * Math.sin(Math.PI * 2 * (time / period));
 
     this.meshes.forEach((mesh) => {
-      mesh.scale.set(scaleEffect, scaleEffect, scaleEffect);
-
-      // Update rotation
-      mesh.rotation.x += mesh.rotationSpeed;
+        mesh.scale.set(scaleEffect, scaleEffect, scaleEffect);
+        mesh.rotation.x += mesh.rotationSpeed;
     });
 
-    // Update camera
     const cameraRange = 10;
-    const parallaxSpeed = 0.4; 
+    const parallaxSpeed = 0.4;
+
+    // progress: de 0 a 1 sobre el total de la página
+    const scrollProgress = this.scrollSmoother
+        ? this.scrollSmoother.progress * parallaxSpeed
+        : (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * parallaxSpeed;
+
     this.camera.position.y = this.mapToRange(
-        
-      this.scrollSmoother.progress* parallaxSpeed ,
-      0,
-      1,
-      cameraRange,
-      -cameraRange
+        scrollProgress,
+        0, 1, cameraRange, -cameraRange
     );
-    //this.camera.position.z = this.settings.cameraDistance + p * 1.5;
-
-  };
-
+};
   mapToRange = (value, inMin, inMax, outMin, outMax) => {
     return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
   };
